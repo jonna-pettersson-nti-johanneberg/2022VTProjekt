@@ -1,1 +1,142 @@
 /* Denna fil skall innehålla din CSS kod */
+/*  Table of content
+    1.Global styles
+        1.1 Body
+        1.2 Global variables
+        1.3 Global styling
+
+    2.Layout
+        2.1 Container
+        2.2 Navigation
+          2.2.1 Logo
+        2.3 Main
+        2.4 Footer
+
+    3. Components
+        3.1 Buttons
+        3.2 Slide-show
+*/
+
+/* ==============
+    Global Styles
+    =============*/
+
+/* 1.1 Body */
+body {
+  color: black;
+  font-size: 100%;
+  overflow-x: hidden;
+  width: 100vw;
+  height: max-content;
+}
+
+/* 1.2 Global Variables */
+
+:root {
+  --color: red;
+  --height: 100vh;
+}
+
+/* 1.3 Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 2.1 Container */
+.container {
+  color: black;
+  min-height: var(--height);
+}
+
+/* 2.2 Navigation */
+nav {
+  top: 0;
+  left: 0;
+  position: sticky;
+  display: flex;
+  flex-flow: row;
+  place-content: center;
+  width: 100vw;
+  height: 5em;
+  border-bottom: 2px solid rgb(73, 73, 73);
+  background: rgb(160, 160, 160);
+  z-index: 1;
+}
+
+nav > .nav-link {
+  text-align: center;
+}
+
+/* 2.2.1 Logga */
+nav > .logo {
+  margin-left: 12.5%;
+}
+
+nav > .logo > img {
+  height: 7em;
+  width: 15em;
+  margin-top: -5%;
+}
+
+/* 2.3 Main */
+.main {
+  background: green;
+  margin-top: 4em;
+  height: 50vh;
+  display: grid;
+  place-items: center;
+}
+
+.main-content {
+  height: 80%;
+  width: 90%;
+  background: purple;
+}
+
+/* 2.4 Footer*/
+footer {
+  position: absolute;
+  bottom: 0;
+  background: hotpink;
+  width: 100vw;
+  height: 5vh;
+}
+
+/*===========
+    Components
+  ============*/
+
+/* 3.1 Buttons */
+.small-button {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #00dbdb;
+  box-shadow: 5px 5px 20px 2px #00dbdb65;
+  transition: background-color 250ms ease-in-out;
+  color: white;
+}
+
+.small-button:hover {
+  background-color: #00dbdb;
+}
+
+/* 3.2 Slide-show */
+.slide-show {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  background: red;
+  overflow-x: scroll;
+  width: 100vw;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.slide-show > * {
+  width: 50vw;
+  height: 45vw;
+  background: blue;
+  outline: 2px solid black;
+}
