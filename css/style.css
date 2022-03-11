@@ -8,8 +8,9 @@
         2.1 Container
         2.2 Navigation
           2.2.1 Logo
-        2.3 Main
-        2.4 Footer
+        2.3 SlideShow Home
+        2.4 Main
+        2.5 Footer
 
     3. Components
         3.1 Buttons
@@ -33,7 +34,9 @@ body {
 /* 1.2 Global Variables */
 
 :root {
-  --color: red;
+  --bg: white;
+  --blue: rgb(0, 160, 227);
+  --red: rgb(229, 28, 32);
   --height: 100vh;
 }
 
@@ -55,12 +58,9 @@ nav {
   left: 0;
   position: sticky;
   display: flex;
-  flex-flow: row;
-  place-content: center;
   width: 100vw;
   height: 5em;
-  border-bottom: 2px solid rgb(73, 73, 73);
-  background: rgb(160, 160, 160);
+  background: var(--bg);
   z-index: 1;
 }
 
@@ -69,8 +69,9 @@ nav > .nav-link {
 }
 
 /* 2.2.1 Logga */
-nav > .logo {
-  margin-left: 12.5%;
+nav > :is(.logo, .burger-menu) {
+  margin-left: 15%;
+  margin-top: 2%;
 }
 
 nav > .logo > img {
@@ -79,19 +80,30 @@ nav > .logo > img {
   margin-top: -5%;
 }
 
+nav > .burger-menu {
+  font-size: 4.5em;
+  margin-left: 25%;
+}
+
+/* 2.3 SlideShow Home */
+.slideHome {
+  margin-top: 2em;
+}
+
 /* 2.3 Main */
 .main {
-  background: green;
-  margin-top: 4em;
+  margin-top: 2em;
   height: 50vh;
   display: grid;
   place-items: center;
 }
 
 .main-content {
-  height: 80%;
-  width: 90%;
-  background: purple;
+  height: calc(50vh * 0.8);
+  width: calc(100vw * 0.9);
+  background-image: url("../img/bild7.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 /* 2.4 Footer*/
@@ -139,10 +151,12 @@ footer {
 }
 
 .slide-show-elmts > * {
-  width: 50vw;
-  height: 25vh;
+  width: calc(50vw - 2vw);
+  height: calc(25vh - 2vh);
   object-fit: cover;
   object-position: 100% 0;
+  padding: 1vh 1vw 1vh 1vw;
+  border-radius: 1em;
 }
 
 .slide-show > span {
