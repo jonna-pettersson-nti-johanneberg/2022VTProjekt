@@ -24,7 +24,7 @@ const slideShowStart = () => {
         () => {
           delay = 0;
         },
-        width <= 500 ? width * 3 : width * 1.2
+        width <= 500 ? width * 3 : width * 1
       );
     }
   });
@@ -38,7 +38,7 @@ const slideShowStart = () => {
         () => {
           delay = 0;
         },
-        width <= 500 ? width * 3 : width * 1.2
+        width <= 500 ? width * 3 : width * 1
       );
     }
   });
@@ -52,6 +52,22 @@ const slideShowPrev = (slideShow, width, delay) => {
   slideShow.scrollBy({ left: -width, behavior: "smooth" });
 };
 
+const burgerMenu = () => {
+  menu = document.querySelector(".burger-menu");
+  deselect = document.querySelector(".deselect");
+  menu.style.transform = "translateX(-50vw)";
+  deselect.style.visibility = "visible";
+  deselect.style.opacity = 0.65;
+};
+
+const burgerMenuDeselect = () => {
+  menu = document.querySelector(".burger-menu");
+  deselect = document.querySelector(".deselect");
+  menu.style.transform = "translateX(50vw)";
+  deselect.style.visibility = "hidden";
+  deselect.style.opacity = 0;
+};
+
 /* ================
     Event Listeners
     =============== */
@@ -62,3 +78,12 @@ if (document.querySelector(".slide-show")) {
 window.onresize = () => {
   slideShowStart();
 };
+
+if (document.querySelector(".burger-menu-btn")) {
+  document
+    .querySelector(".burger-menu-btn")
+    .addEventListener("click", burgerMenu);
+  document
+    .querySelector(".deselect")
+    .addEventListener("click", burgerMenuDeselect);
+}
