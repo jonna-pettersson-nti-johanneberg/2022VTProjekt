@@ -87,3 +87,18 @@ if (document.querySelector(".burger-menu-btn")) {
     .querySelector(".deselect")
     .addEventListener("click", burgerMenuDeselect);
 }
+
+if (document.getElementsByClassName("accordion")) {
+  const acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", () => {
+      acc[i].classList.toggle("active");
+      var panel = acc[i].nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+}
