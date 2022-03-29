@@ -117,30 +117,26 @@ nav > .burger-menu-btn {
 /* 2.5 Main */
 .main {
   margin-top: 2em;
-  height: fit-content;
+  height: 50vh;
+  width: 100vw;
   display: grid;
-  place-items: center;
+  place-content: center;
 }
 
-.main-content {
-  height: calc(50vh * 0.8);
-  width: calc(100vw * 0.9);
-  background-image: url("../img/bild7.jpg");
-  background-size: cover;
-  background-position: center;
+.main > * > * {
+  height: calc(70vh * 0.6);
+  width: calc(100vw * 0.7);
 }
 
 @media only screen and (min-width: 600px) {
-  .main-content {
-    height: calc(70vh * 0.8);
+  .main > * > * {
     width: calc(100vw * 0.9);
   }
 }
 
 /* 2.6 Footer*/
 footer {
-  position: relative;
-  margin-top: 3em;
+  margin-top: 2em;
   background: var(--bg-sec);
   width: 100vw;
   height: max-content;
@@ -265,4 +261,49 @@ footer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+
+/*3.5 Cross fade img*/
+.crossFadeImg {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.crossFadeImg > * {
+  position: absolute;
+  animation-name: crossFadeKeys;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 64s;
+}
+
+@keyframes crossFadeKeys {
+  0% {
+    opacity: 1;
+  }
+  17% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.crossFadeImg > img:nth-of-type(1) {
+  animation-delay: 49s;
+}
+.crossFadeImg > img:nth-of-type(2) {
+  animation-delay: 33s;
+}
+.crossFadeImg > img:nth-of-type(3) {
+  animation-delay: 16s;
+}
+.crossFadeImg > img:nth-of-type(4) {
+  animation-delay: 0;
 }
