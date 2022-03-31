@@ -25,6 +25,7 @@
 /*1.1 Html */
 html {
   overflow-x: hidden;
+  font-family: sans-serif;
 }
 
 /* 1.2 Body */
@@ -70,21 +71,25 @@ nav {
   width: 100vw;
   height: 5em;
   background: var(--bg);
-  z-index: 1;
+  z-index: 2;
   display: grid;
   place-items: center;
   grid-auto-flow: column;
 }
 
-nav > a {
+nav > .links {
   text-align: center;
-  font-size: 4em;
+  font-size: 2em;
   text-decoration: none;
   color: var(--red);
 }
 
+nav > :is(.links:hover, .links:focus) {
+  color: var(--blue);
+}
+
 /* 2.2.1 Logga */
-nav > .logo {
+nav .logo {
   width: 6em;
 }
 
@@ -110,33 +115,49 @@ nav > .burger-menu-btn {
 }
 
 /* 2.4 SlideShow Home */
-.slideHome {
+.firstEl {
   margin-top: calc(2em + 5em);
 }
 
 /* 2.5 Main */
 .main {
-  margin-top: 2em;
   height: 50vh;
   width: 100vw;
   display: grid;
   place-content: center;
+  position: relative;
+
+  --height: calc(70vh * 0.6);
+  --width: calc(100vw * 0.7);
 }
 
-.main > * > * {
-  height: calc(70vh * 0.6);
-  width: calc(100vw * 0.7);
+.main > h1 {
+  color: var(--red);
+  z-index: 1;
+  font-size: 10ch;
+}
+
+.main > a {
+  position: absolute;
+  left: calc((100vw - var(--width)) / 2);
+  top: -1.7vh;
+  height: var(--height);
+  width: var(--width);
+  z-index: 1;
 }
 
 @media only screen and (min-width: 600px) {
-  .main > * > * {
-    width: calc(100vw * 0.9);
+  .main {
+    --width: calc(100vw * 0.9);
+  }
+
+  .main > a {
+    top: -1vh;
   }
 }
 
 /* 2.6 Footer*/
 footer {
-  margin-top: 2em;
   background: var(--bg-sec);
   width: 100vw;
   height: max-content;
@@ -270,6 +291,8 @@ footer {
   place-items: center;
 }
 .crossFadeImg > * {
+  height: var(--height);
+  width: var(--width);
   position: absolute;
   animation-name: crossFadeKeys;
   animation-timing-function: ease-in-out;
@@ -306,4 +329,28 @@ footer {
 }
 .crossFadeImg > img:nth-of-type(4) {
   animation-delay: 0;
+}
+
+/*3.6 Spacer*/
+.spacer {
+  margin-top: 2em;
+}
+
+/*3.7 Image list*/
+.imgList {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, calc((100vw / 2) - 2rem));
+  gap: 2rem;
+  place-content: center;
+}
+
+.imgList > * {
+  width: calc((100vw / 2) - 2rem);
+  height: max-content;
+}
+
+.imgList > * > img {
+  width: inherit;
+  height: calc((100vh / 3.5) - 2rem);
 }
