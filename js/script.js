@@ -76,13 +76,18 @@ if (document.querySelector(".slide-show")) {
 }
 
 window.onresize = () => {
-  slideShowStart();
+  if (document.querySelector(".slide-show")) {
+    slideShowStart();
+  }
 };
 
 if (document.querySelector(".burger-menu-btn")) {
   document
     .querySelector(".burger-menu-btn")
     .addEventListener("click", burgerMenu);
+  document
+    .querySelector(".burger-menu-btn")
+    .addEventListener("keydown", burgerMenu);
   document
     .querySelector(".deselect")
     .addEventListener("click", burgerMenuDeselect);

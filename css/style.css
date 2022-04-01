@@ -82,20 +82,28 @@ nav > .links {
   font-size: 2em;
   text-decoration: none;
   color: var(--red);
+  transition: color 250ms ease-in-out;
 }
 
-nav > :is(.links:hover, .links:focus) {
+nav
+  > :is(.links:hover, .links:focus, .burger-menu-btn:hover, .burger-menu-btn:focus) {
   color: var(--blue);
 }
 
 /* 2.2.1 Logga */
 nav .logo {
   width: 6em;
+  transition: transform 250ms ease-in-out;
+}
+
+nav :is(.logo:hover, a:focus .logo) {
+  transform: scale(120%);
 }
 
 nav > .burger-menu-btn {
   color: var(--red);
   font-size: 3em;
+  transition: color 250ms ease-in-out;
 }
 
 /*2.3 Burger menu*/
@@ -135,6 +143,8 @@ nav > .burger-menu-btn {
   color: var(--red);
   z-index: 1;
   font-size: 10ch;
+  text-align: center;
+  margin-top: -3rem;
 }
 
 .main > a {
@@ -188,7 +198,7 @@ footer {
   display: grid;
   grid-auto-flow: column;
   width: 100vw;
-  height: fit-content;
+  min-height: 30vh;
 
   --height: 25vh;
   --width: calc(100vw / 2);
@@ -292,6 +302,7 @@ footer {
 }
 .crossFadeImg > * {
   height: var(--height);
+  object-fit: cover;
   width: var(--width);
   position: absolute;
   animation-name: crossFadeKeys;
@@ -339,18 +350,32 @@ footer {
 /*3.7 Image list*/
 .imgList {
   width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(2, calc((100vw / 2) - 2rem));
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
   place-content: center;
 }
 
 .imgList > * {
-  width: calc((100vw / 2) - 2rem);
+  padding: 2rem;
+  flex: 1 1 calc(25em - 4rem);
+  width: max-content;
   height: max-content;
 }
 
 .imgList > * > img {
-  width: inherit;
-  height: calc((100vh / 3.5) - 2rem);
+  width: 100%;
+  height: calc(30em - 4rem);
+  object-fit: cover;
 }
+
+/* @media only screen and (min-width: 600px) {
+  .imgList {
+    grid-template-columns: repeat(4, calc((100vw / 4) - 4rem));
+    gap: 4rem;
+  }
+
+  .imgList > * > img {
+    width: calc((100vw / 4) - 4rem);
+    height: calc((100vh / 2) - 2rem);
+  }
+} */
