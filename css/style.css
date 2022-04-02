@@ -17,6 +17,11 @@
         3.1 Buttons
         3.2 Slide-show
         3.3 Deselect
+        3.4 Accordion
+        3.5 Cross Fade Image
+        3.6 Spacer
+        3.7 Image list
+        3.8 Heading
 */
 
 /* ==============
@@ -224,7 +229,7 @@ footer {
   width: calc(var(--width) - 2vw);
   height: calc(var(--height) - 2vh);
   object-fit: cover;
-  object-position: 100% 0;
+  object-position: 50% 50% 50% 50%;
   padding: 1vh 1vw 1vh 1vw;
   border-radius: 1em;
 }
@@ -356,6 +361,7 @@ footer {
 }
 
 .imgList > * {
+  position: relative;
   padding: 2rem;
   flex: 1 1 calc(25em - 4rem);
   width: max-content;
@@ -368,14 +374,26 @@ footer {
   object-fit: cover;
 }
 
-/* @media only screen and (min-width: 600px) {
-  .imgList {
-    grid-template-columns: repeat(4, calc((100vw / 4) - 4rem));
-    gap: 4rem;
-  }
+.imgList > * > span {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  font-size: 5ch;
+  padding: 5px;
+  color: var(--blue);
+  background-color: rgba(0, 0, 0, 0.274);
+  border-radius: 1rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
 
-  .imgList > * > img {
-    width: calc((100vw / 4) - 4rem);
-    height: calc((100vh / 2) - 2rem);
-  }
-} */
+.imgList > * > span:hover {
+  color: var(--red);
+  background-color: rgb(0, 0, 0);
+}
+
+/* 3.8 Heading*/
+.heading {
+  text-align: center;
+  font-size: x-large;
+}
