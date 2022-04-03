@@ -30,7 +30,6 @@
 /*1.1 Html */
 html {
   overflow-x: hidden;
-  font-family: sans-serif;
 }
 
 /* 1.2 Body */
@@ -57,6 +56,7 @@ body {
 * {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 /*=======
@@ -96,12 +96,12 @@ nav
 }
 
 /* 2.2.1 Logga */
-nav .logo {
+.logo {
   width: 6em;
   transition: transform 250ms ease-in-out;
 }
 
-nav :is(.logo:hover, a:focus .logo) {
+:is(.logo:hover, a:focus .logo) {
   transform: scale(120%);
 }
 
@@ -116,15 +116,54 @@ nav > .burger-menu-btn {
   background-color: var(--bg);
   position: absolute;
   z-index: 100;
-  top: -0.5rem;
+  top: 0;
   left: 100vw;
   color: var(--text-b);
-  font-size: 3em;
+  font-size: 2em;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 200vh;
   width: 50vw;
+  outline: 2px solid black;
+  background-color: var(--blue);
   transition: transform 250ms ease-in-out;
+}
+
+@media only screen and (min-width: 600px) {
+  .burger-menu {
+    width: 10em;
+  }
+}
+
+.burger-menu > * {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  text-align: right;
+  margin-right: 2ch;
+  display: inline-block;
+  transition: color 0.2s ease-in-out;
+  letter-spacing: 1px;
+  margin-top: 0.5ch;
+}
+
+.burger-menu > :is(*:hover, *:focus) {
+  color: var(--red);
+}
+
+.burger-menu > *:before {
+  content: "";
+  height: 0;
+  position: absolute;
+  width: 0.25em;
+  background-color: var(--red);
+  right: -1ch;
+  transition: all 0.2s ease-in-out;
+}
+
+.burger-menu > *:hover:before,
+.burger-menu > *:focus:before {
+  height: 100%;
 }
 
 /* 2.4 SlideShow Home */
@@ -187,14 +226,14 @@ footer {
   padding: 0.5rem 1rem;
   text-decoration: none;
   cursor: pointer;
-  border: 2px solid #00dbdb;
-  box-shadow: 5px 5px 20px 2px #00dbdb65;
-  transition: background-color 250ms ease-in-out;
-  color: white;
+  border: 10px solid var(--red);
+  color: black;
+  background: white;
+  transition: border-color 250ms ease-in-out;
 }
 
 .small-button:hover {
-  background-color: #00dbdb;
+  border-color: var(--blue);
 }
 
 /* 3.2 Slide-show */
@@ -237,6 +276,8 @@ footer {
 .slide-show > span {
   position: absolute;
   margin-top: calc((var(--height) / 2) - 0.5ch);
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .slide-show :last-child {
@@ -253,6 +294,7 @@ footer {
   width: 100vw;
   visibility: hidden;
   opacity: 0;
+  z-index: 1;
   transition: opacity 100ms ease-in-out;
 }
 
@@ -394,6 +436,72 @@ footer {
 
 /* 3.8 Heading*/
 .heading {
+  margin-top: 2em;
   text-align: center;
   font-size: x-large;
+}
+
+/* 3.9 Mail Form*/
+.mailForm {
+  padding: 2rem;
+  width: calc(100vw -4rem);
+  display: grid;
+  gap: 1em;
+  grid-template-areas:
+    "he"
+    "in"
+    "ti"
+    "ma"
+    "co"
+    "su";
+}
+
+@media only screen and (min-width: 600px) {
+  .mailForm {
+    grid-template-columns: 50% calc(50% - 2rem);
+    grid-template-areas:
+      "he in"
+      "ma in"
+      "ti in"
+      "co co"
+      "co co"
+      "co co"
+      "su su";
+  }
+  .mailForm > div:not(:first-child) {
+    margin-top: 3em;
+  }
+}
+
+.mailForm > *:not(:is(:last-child, :first-child)) {
+  border: 0;
+  padding: 1ch;
+  margin: 0;
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.192) inset;
+}
+
+.mailForm > *:first-child {
+  grid-area: he;
+}
+
+.mailForm > div:not(:first-child) {
+  min-height: calc(100% - 4em);
+  grid-area: in;
+}
+
+.mailForm > input:nth-child(1) {
+  grid-area: ma;
+}
+
+.mailForm > input:nth-child(2) {
+  grid-area: ti;
+}
+
+.mailForm > textarea {
+  grid-area: co;
+}
+
+.mailForm > *:last-child {
+  grid-area: su;
+  text-align: center;
 }
